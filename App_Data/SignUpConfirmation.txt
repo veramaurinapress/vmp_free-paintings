@@ -1,0 +1,12 @@
+﻿Hello <% UserName %>, 
+
+Thank you for signing up for a new account at www.veramaurinapress.org .
+
+To log into the site, use these details:
+
+User name:		<% UserName %>
+Password:		<% Password %>
+
+We look forward to your contributions.
+
+Vera Maurina Press

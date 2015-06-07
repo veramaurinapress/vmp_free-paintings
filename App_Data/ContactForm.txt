@@ -1,0 +1,7 @@
+﻿Hello Vera,
+
+A client has left the following feedback at the site:
+
+Name:              ##Name##
+E-mail address:    ##Email##
+Comments:          ##Comments##

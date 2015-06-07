@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Frontend.master.cs" Inherits="MasterPages_Frontend" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+  <title></title>
+  <asp:ContentPlaceHolder ID="head" runat="server">
+  </asp:ContentPlaceHolder>
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-16304301-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+
+<link rel="shortcut icon" href="../favicon.ico" />
+    <link href="../Styles/Styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+  <form id="form1" runat="server">
+   
+   <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True">
+    <Scripts>
+      <asp:ScriptReference Path="~/Scripts/jquery-1.4.1.min.js" />
+    </Scripts>
+  </asp:ScriptManager>
+
+  <div id="PageWrapper"><br />
+    <div id="Header">
+
+    <div id="LoginOut"><asp:LoginName ID="LoginName1" runat="server" 
+            FormatString="Logged in as {0}" BackColor="White" />
+        
+        <asp:LoginView ID="LoginView1" runat="server">
+            <LoggedInTemplate>
+                (<asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" 
+                    LogoutPageUrl="~/VisitThanks.aspx" />)
+            </LoggedInTemplate>
+            <RoleGroups>
+                <asp:RoleGroup Roles="Managers">
+                    <ContentTemplate>
+                        <asp:HyperLink ID="HyperLink1" runat="server" 
+                            NavigateUrl="~/Management/Default.aspx">Manage Site</asp:HyperLink> or
+                            <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                    </ContentTemplate>
+                </asp:RoleGroup>
+            </RoleGroups>
+        </asp:LoginView>
+        </div>
+
+    <a id="HeaderHome" href="~/" runat="server" style="color:White; font-family: Times New Roman;">Vera Maurina Press</a>  
+ </div>
+       
+        
+    <asp:LoginView ID="LoginView2" runat="server">
+
+    
+  <AnonymousTemplate>
+    <div id="MenuWrapper">
+      <asp:Menu ID="Menu1" runat="server" CssClass="MainMenu" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" StaticEnableDefaultPopOutImage="False">
+      </asp:Menu>
+      <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+    </div>
+    </AnonymousTemplate>
+
+    <LoggedInTemplate>
+     <div id="MenuWrapper">
+     <asp:Menu  ID="Menu1" runat="server" CssClass="MainMenu" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" StaticEnableDefaultPopOutImage="False">
+      </asp:Menu>
+      <asp:SiteMapDataSource SiteMapProvider="SiteMap2" ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+    </div>
+    </LoggedInTemplate>
+      </asp:LoginView> 
+
+    <div id="MainContent">
+     <!-- <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+      </asp:SiteMapPath> -->
+   
+      <asp:ContentPlaceHolder ID="cpMainContent" runat="server">
+      </asp:ContentPlaceHolder>
+    </div>
+    <!--
+    <div id="Sidebar" align="center">
+       
+    </div>
+  -->
+    <!-- <div id="Footer"><h3><b>The 'face-to-face' paintings
+    and prints approximate the size of the screen 
+    images.</b></h3>
+        
+    </div><br /><br /> -->
+  </div>
+
+  </form>
+</body>
+</html>

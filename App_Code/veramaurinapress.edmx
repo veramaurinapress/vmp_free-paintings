@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="veramaurinapressModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="veramaurinapressModelStoreContainer">
+          <EntitySet Name="Fields" EntityType="veramaurinapressModel.Store.Fields" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Image" EntityType="veramaurinapressModel.Store.Image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImageArchive" EntityType="veramaurinapressModel.Store.ImageArchive" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Text" EntityType="veramaurinapressModel.Store.Text" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Image_ImageArchive" Association="veramaurinapressModel.Store.FK_Image_ImageArchive">
+            <End Role="ImageArchive" EntitySet="ImageArchive" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Text_Fields" Association="veramaurinapressModel.Store.FK_Text_Fields">
+            <End Role="Fields" EntitySet="Fields" />
+            <End Role="Text" EntitySet="Text" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Fields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="ToolTip" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ImageUrl" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ImageArchiveId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImageArchive">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Text">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Summary" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="FieldId" Type="int" Nullable="false" />
+          <Property Name="Authorized" Type="bit" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Image_ImageArchive">
+          <End Role="ImageArchive" Type="veramaurinapressModel.Store.ImageArchive" Multiplicity="1" />
+          <End Role="Image" Type="veramaurinapressModel.Store.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageArchive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ImageArchiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Text_Fields">
+          <End Role="Fields" Type="veramaurinapressModel.Store.Fields" Multiplicity="1" />
+          <End Role="Text" Type="veramaurinapressModel.Store.Text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Text">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="veramaurinapressModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="veramaurinapressEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fields" EntityType="veramaurinapressModel.Field" />
+          <EntitySet Name="Texts" EntityType="veramaurinapressModel.Text" />
+          <AssociationSet Name="FK_Text_Fields" Association="veramaurinapressModel.FK_Text_Fields">
+            <End Role="Fields" EntitySet="Fields" />
+            <End Role="Text" EntitySet="Texts" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="veramaurinapressModel.Image" />
+          <EntitySet Name="ImageArchives" EntityType="veramaurinapressModel.ImageArchive" />
+          <AssociationSet Name="FK_Image_ImageArchive" Association="veramaurinapressModel.FK_Image_ImageArchive">
+            <End Role="ImageArchive" EntitySet="ImageArchives" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Texts" Relationship="veramaurinapressModel.FK_Text_Fields" FromRole="Fields" ToRole="Text" />
+        </EntityType>
+        <EntityType Name="Text">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Summary" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FieldId" Type="Int32" Nullable="false" />
+          <Property Name="Authorized" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Field" Relationship="veramaurinapressModel.FK_Text_Fields" FromRole="Text" ToRole="Fields" />
+        </EntityType>
+        <Association Name="FK_Text_Fields">
+          <End Role="Fields" Type="veramaurinapressModel.Field" Multiplicity="1" />
+          <End Role="Text" Type="veramaurinapressModel.Text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Text">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToolTip" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ImageArchiveId" Nullable="false" />
+          <NavigationProperty Name="ImageArchive" Relationship="veramaurinapressModel.FK_Image_ImageArchive" FromRole="Image" ToRole="ImageArchive" />
+        </EntityType>
+        <EntityType Name="ImageArchive">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Images" Relationship="veramaurinapressModel.FK_Image_ImageArchive" FromRole="ImageArchive" ToRole="Image" />
+          <Property Type="String" Name="UserName" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Image_ImageArchive">
+          <End Type="veramaurinapressModel.ImageArchive" Role="ImageArchive" Multiplicity="1" />
+          <End Type="veramaurinapressModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageArchive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ImageArchiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="veramaurinapressModelStoreContainer" CdmEntityContainer="veramaurinapressEntities2">
+          <EntitySetMapping Name="Fields"><EntityTypeMapping TypeName="veramaurinapressModel.Field"><MappingFragment StoreEntitySet="Fields">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Texts"><EntityTypeMapping TypeName="veramaurinapressModel.Text"><MappingFragment StoreEntitySet="Text">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Summary" ColumnName="Summary" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+            <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+            <ScalarProperty Name="Authorized" ColumnName="Authorized" />
+            <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+            <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="veramaurinapressModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ImageArchiveId" ColumnName="ImageArchiveId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="ToolTip" ColumnName="ToolTip" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageArchives">
+            <EntityTypeMapping TypeName="veramaurinapressModel.ImageArchive">
+              <MappingFragment StoreEntitySet="ImageArchive">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="veramaurinapress">
+        <EntityTypeShape EntityType="veramaurinapressModel.Field" Width="1.5" PointX="0.5" PointY="1.625" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="veramaurinapressModel.Text" Width="1.5" PointX="2.75" PointY="1.125" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="veramaurinapressModel.FK_Text_Fields" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="2.5189925130208337" />
+          <ConnectorPoint PointX="2.75" PointY="2.5189925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="veramaurinapressModel.Image" Width="1.5" PointX="6.875" PointY="1.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="veramaurinapressModel.ImageArchive" Width="1.5" PointX="4.625" PointY="1.5" Height="1.5956835937499996" />
+        <AssociationConnector Association="veramaurinapressModel.FK_Image_ImageArchive" >
+          <ConnectorPoint PointX="6.125" PointY="2.297841796875" />
+          <ConnectorPoint PointX="6.875" PointY="2.297841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

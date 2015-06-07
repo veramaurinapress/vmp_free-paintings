@@ -1,0 +1,30 @@
+﻿.ItemContainer
+{
+    width: 800px;
+    list-style-type: none;
+    clear: both;
+}
+
+.ItemContainer li
+{
+ 
+    width: 400px;
+    float: left;
+}
+
+.ItemContainer li img
+{
+    width: 355px;
+    margin: 20px 20px 20px 0;
+}
+
+.Summary
+{
+    font-style: italic;
+    display:block;
+}
+
+.DTMaxWidth
+{
+    width:400px;
+}

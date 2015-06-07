@@ -1,0 +1,12 @@
+﻿Hello Vera,
+
+A client has left the following feedback at the site:
+
+Name:              ##Name##
+E-mail address:    ##Email##
+Gift code:		   ##GiftCode##
+Street:			   ##Street##
+City:			   ##City##
+State:			   ##State##
+Zip code:		   ##ZipCode##
+Comments:          ##Comments##

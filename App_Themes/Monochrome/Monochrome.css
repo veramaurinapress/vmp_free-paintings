@@ -1,0 +1,680 @@
+﻿*
+{
+  /* 
+    Defines the main font used throughout the entire site 
+  */
+  font-family: Arial, Sans-Serif;
+    margin-left: 0px;
+}
+
+img
+{
+    border: 0;
+}
+
+body
+{
+  /* 
+    Clears white space around the body and gives it a dark #F0F0F0 color.
+  */
+  margin: 0;
+  background-color:White;
+}
+
+a 
+{
+  /*
+    Clears the underline on normal links, and gives them a purple text color.
+  */
+  text-decoration: none;
+  color:Red;
+}
+
+a:hover
+{
+  /*
+    Underlines links when the user hovers the mouse over them.
+  */
+  text-decoration : underline;
+}
+
+h1
+{
+  /*
+    Makes h1 elements smaller than their browser default.
+  */
+  font-size : 20px;
+}
+
+h2
+{
+  /* 
+    Gives h2 elements a different background color and size, 
+    and adds a bit of margin at the top to create room between the heading and the preceding element.
+  */
+  font-size : 14px;
+  color : #F0F0F0;
+  margin-top : 10px;
+}
+
+#PageWrapper
+{
+  /*
+    Sets the total width for the entire page. Also sets the background-color
+    which is used to fill the background of the Sidebar in case the MainContent block is taller than the Sidebar.
+    Uses margin: auto to center the entire page in the middle of the browser's window.
+  */
+  width: 844px;
+  margin: auto;
+}
+
+#Header
+{
+  /*
+    Gives the header the same width as the PageWrapper. The height creates some room for the logo
+    that is set with the background-image.
+  */
+  background-image: url(Images/Header.gif);
+  background-repeat: no-repeat;
+  width: 875px;
+  padding-left:5px;
+  font-size:20px;
+  font-family:Times New Roman;
+  font-weight: bold;
+}
+
+#HeaderHome
+{
+  /*
+    The #Header a is a link nested in #Header. It provides a link back to the homepage.
+    The size of the link is the same as the header, so the entire header is clickable.
+  */
+  width: 875px; 
+  height: 36px; 
+  display: block; 
+}
+
+#MenuWrapper
+{
+  /*
+    The menu spans the page width, right below the header.
+    At the top and left a few pixels padding is applied to create some room.
+  */
+  width: 863px;
+  height: 75px;
+}
+
+#MenuWrapper a
+{
+  color: Black;
+}
+
+.MainMenu
+{
+  border: 1px solid black;
+  width: 863px;
+  height: 50px;
+}
+
+.MainMenu ul li
+{
+  width: 215px;
+  text-align:center;
+}
+
+#MainContent
+{
+  /*
+    Defines the main content area. The #MainContent element has a minimum height of 500 pixels, but can grow if necessary.
+    The font-size is 80% of its parent element, which in this case comes down to 80% of the font
+    the user has specified as the default font in the browser.
+  */
+  background-color:white;
+  font-size: 0.8em;
+  width: 844px;
+  border: 1px solid black;
+  float: left;
+  min-height: 450px;
+  margin-bottom:10px;
+  padding:10px;
+}
+
+#Sidebar
+{
+  /*
+    The Sidebar is positioned to the right of the MainContent area. It gets the same font-size as #MainContent
+    and gets a background image called Sidebar.jpg. To ensure the image is visible in (most) browsers
+    on a small page, the element gets a minimum height of 500px. This is ignored by IE 6.
+  */
+  font-size: 0.8em;
+  color: White;
+  /*background-image: url(Images/Sidebar.jpg);
+  background-repeat: no-repeat; */
+  background-color: #F0F0F0;
+  width: 142px;
+  min-height: 530px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  float: left;
+}
+
+#Footer
+{
+  /*
+    The footer is positioned below all other content (yet still within PageWrapper).
+    clear: both is used to clear the impact of the float properties used for #MainContent and #Sidebar.
+  */
+  width: 834px;
+  clear: both;
+  height: 36px;
+  border: 1px solid black;
+  color: Black;
+  text-align: center;
+  font-family:Times New Roman;
+  font-size: 0.7em;
+  font-weight: bold;
+ 
+  margin-left:25px;
+}
+
+.hidden
+{
+    width: 200px; 
+    height: 200px; 
+    display: block;
+    float:left;
+    color:White;
+    padding:10px;
+    margin-left:100px;
+}
+
+.hidden h1
+{
+    color:Black;
+    font-size: 40px;
+}
+
+#AboveHidden 
+{
+    width: 804px; 
+    height: 255px; 
+    display: block;
+    background-color:Black;
+    color:White;
+    padding:10px;
+}
+
+.show h3
+{
+    color:White;
+    margin-left: 10px;
+   
+}
+
+.Introduction
+{
+  font-style: italic;
+  color: #3e3e3e;
+}
+
+.MyButton
+{
+  color: White;
+}
+
+ul.level1
+{
+  /* Defines the appearance of main menu items. */
+  font-size: 40px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 30px;
+}
+
+ul.level1 .selected
+{
+  /* Defines the appearance of active menu items */
+  background-image: url('Images/menu.gif');
+  height:30px; 
+  background-repeat:no-repeat;
+  background-color:White;
+}
+
+a.level1
+{
+    padding:10px;
+}
+
+a.level2
+{
+  /* Defines the appearance of the sub menu items */
+  background-color:White;
+  padding:10px;
+
+}
+
+a.level1:hover, a.level2:hover
+{
+  /* Defines the hover style for the main and sub items */
+  background-color:Yellow;
+}
+
+.ErrorMessage
+{
+    color:Red;
+}
+
+.PleaseWait
+{
+  height: 100px;
+  width: 700px;
+  color: Red;
+  font-weight: bold;
+  background-image: url(Images/PleaseWait.gif);
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+
+.Attention
+{
+  border: 20px solid red;
+  padding: 10px 0;
+  width: 300px;
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+
+.Watermark
+{
+  position: relative;
+  width: 0;
+  height: 1.25em;
+  vertical-align: top;
+}
+
+.Watermark label
+{
+  position: absolute;
+  left: 0;
+  top: 2px;
+  white-space: nowrap;
+  color: #999;
+  padding-left: 4px;
+  height: 1.25em;
+  vertical-align: middle;
+}
+
+.InputBox
+{
+  width: 300px;
+}
+
+#gnf_examples
+{
+   list-style-type: none;
+}
+
+#gnf_examples li 
+{
+   float: left;
+   width: 254px;
+}
+
+.CreateUserWizard
+{
+    z-index:1;
+    position:relative;
+    top: 562px;
+    left: 50px;
+    height: 456px;
+}
+
+#SignUpForm
+{    
+    width: 300px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+hr 
+{
+
+border-top: 4px dashed #000;/*the border*/
+width:85%;
+
+} 
+
+.BigText
+{
+    font-size:25px;
+}
+
+.AllButtons 
+{
+    cursor:pointer;
+}
+
+#LoginOut
+{
+    margin-right:15px;
+    float: right;
+    color:Black;
+    background-color:White;
+    font-size:15px;
+    position:static;
+    top:200px;
+    right:-10px;
+}
+
+#ImageDescription
+{
+    width:400px;
+}
+
+.AboutText
+{
+
+  background-repeat: no-repeat;
+  float:right;
+  width:560px;
+}
+
+.FrontPageTextColorWhite
+{
+    color:white;
+    font-size:47px;
+    margin:5px;
+    font-weight: bold;
+   
+}
+
+.FrontPageTextColorWhitesmall
+{
+    color:white;
+    font-size:30px;
+    margin:5px;
+   
+
+}
+    
+
+.FrontPageTextColorBlack
+{
+    color:Black;
+    margin:5px;
+}
+
+#ExchangeButton
+{
+    float:left;
+    margin:50px;
+ 
+}
+
+#AbstractionButton
+{
+    margin:50px;
+    float:left;
+   
+}
+
+#PortraitButton
+{
+  
+    margin:50px;
+}
+
+
+#AddArchiveBackground 
+{
+  background-image: url(Images/AddArchiveExamples.gif);
+  background-repeat:no-repeat;
+  height:600px;
+}
+
+#ProfilePics
+{
+  background-image: url(Images/headshots.gif);
+  background-repeat:no-repeat;
+  height:600px;
+}
+
+.ItemContainer
+{
+    width: 800px;
+    list-style-type: none;
+    clear: both;
+}
+
+.ItemContainer li
+{
+ 
+    width: 400px;
+    float: left;
+}
+
+.ItemContainer li img
+{
+    width: 355px;
+    margin: 20px 20px 20px 0;
+}
+
+.Summary
+{
+    font-style: italic;
+    display:block;
+}
+
+.DTMaxWidth
+{
+    width:400px;
+}
+
+.portraits
+{
+    float:left;
+}
+
+#AllPortraits
+{
+    float:left;
+    margin:50px;
+}
+
+#carousel
+{
+   position: absolute;
+   top: 180px;
+   z-index: 1;
+}
+
+#carousel1
+{
+   position: absolute;
+   top: 131px;
+   z-index: 0;
+}
+
+#carousel2
+{
+    z-index: 0; 
+    position: absolute;
+    top: 132px; 
+}
+
+.thumbs
+{
+    z-index: 1;
+    position: absolute;
+    top: 140px;
+    margin-left:7px;
+    width: 888px;
+}
+
+.thumbs img
+{
+    border: 1px solid black;
+}
+
+.PoemsButton
+{
+
+  margin-left: 21px;
+  margin-right: 21px;
+  float:left;
+}
+
+.text
+{
+    float:left;
+    margin-left:30px;
+}
+
+.image 
+{
+  float:right; 
+  margin-top:25px; 
+  margin-right:60px;
+}
+
+.textii
+{
+    float:left;
+    margin-left:30px;
+}
+
+.imageii 
+{
+  float:right;  
+  margin-right:200px;
+}
+
+.ProductText 
+{ 
+    font-size:75px;
+    top: 10px;
+    color:Gray;
+    font-weight: bold;
+    margin-right: 50px;
+}
+
+.ProductTextii
+{ 
+    font-size:20px;
+    margin-left: 10px;
+    color:Gray;
+    font-weight: bold;
+  
+}
+
+.ProductTextiii
+{ 
+    font-size:75px;
+    margin-left: 10px;
+    color:Gray;
+    font-weight: bold;
+    margin-top:630px; 
+}
+
+.PoemText
+{ 
+    font-family: Times New Roman;
+    font-size:75px;
+    margin-right: 50px;
+    color:Gray;
+    font-weight: bold;  
+}    
+
+.sendPainting
+{
+    color:gray;
+    font-weight:bold;
+    font-size:75px; 
+    text-align:justify;
+}
+
+#GiftFormText
+{
+    float:right;
+    width:350px;
+    margin-right:3px;
+    font-size:20px;
+    color:white;
+    font-weight: bold;
+}
+
+
+#GiftFormBackImage
+{
+    background-image:url('Images/villa_rotonda_plan_webiii.jpg');
+    background-repeat: repeat;
+}
+
+#ClaimGiftText
+{
+    font-size:20px;
+    font-weight: bold;
+}
+
+#text-box0 {
+    background: #CCC;
+    border: 1px solid #999;
+    padding: 20px;
+    width: 225px;
+    float: left;
+    margin: 7px;
+}
+
+#text-box1 {
+    background: #CCC;
+    border: 1px solid #999;
+    padding: 20px;
+    width: 225px;
+    float: left;
+    margin: 7px;
+}
+
+#text-box2 {
+    background: #CCC;
+    border: 1px solid #999;
+    padding: 20px;
+    width: 225px;
+    float: left;
+    margin: 7px;
+}
+
+#text-content0 {
+    color: #333;
+    font-style: italic;
+    text-align: left;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 20px;
+}
+
+#text-content1 {
+    color: #333;
+    font-style: italic;
+    text-align: left;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 20px;
+}
+
+#text-content2 {
+    color: #333;
+    font-style: italic;
+    text-align: left;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 20px;
+}
+
+#text-reload {
+    border-top: 1px solid #999;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    outline: none;
+}
